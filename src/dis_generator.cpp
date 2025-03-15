@@ -1,3 +1,4 @@
+// g++ src/dis_generator.cpp -o build/dis_generator -I/usr/local/include -L/usr/local/lib -lLHAPDF -O3
 #include <iostream>
 #include <fstream>
 #include <random>
@@ -46,9 +47,9 @@ int main(){
     output.close();
 
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<seconds>(stop - start);
+    auto duration = duration_cast<milliseconds>(stop - start);
 
     cout << "Generated " << N_events << "events!" << endl;
-    cout << "Time taken: " << duration.count() << "seconds" << endl;
+    cout << "Time taken: " << duration.count() / 1000.0 << "seconds" << endl;
     return 0;
 }

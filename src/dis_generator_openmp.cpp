@@ -57,6 +57,9 @@
 //     return 0;
 // }
 
+
+// g++ -fopenmp -O3 src/dis_generator_openmp.cpp -o build/dis_generator_openmp -I/usr/local/include -L/usr/local/lib -lLHAPDF
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -88,8 +91,9 @@ void generate_event(LHAPDF::PDF *pdf, double &x, double &Q2, double &weight) {
 }
 
 // Main function
+//
 int main() {
-    int N_events = 1000000;
+    int N_events = 10000000;
     vector<string> thread_outputs(omp_get_max_threads());  // Buffers for each thread
 
     auto start = high_resolution_clock::now();
